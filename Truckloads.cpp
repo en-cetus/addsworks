@@ -1,21 +1,20 @@
 #include <iostream>
 using namespace std;
+#include "Truckloads.h"
 
-class Truckloads {
-public:
-    int numTrucks(int numCrates,  int loadSize) {
-        //basecase
-        if (numCrates <= loadSize){
-            return 1;
-        }
-        else {
-            int pileLeft = numCrates / 2;
-            int pileRight = numCrates - pileLeft;
-            return numTrucks(pileLeft, loadSize) + numTrucks(pileRight, loadSize);
-        }
+
+int Truckloads :: numTrucks(int numCrates,  int loadSize) {
+    //basecase
+    if (numCrates <= loadSize){
+        return 1;
     }
+    else {
+        int pileLeft = numCrates / 2;
+        int pileRight = numCrates - pileLeft;
+        return numTrucks(pileLeft, loadSize) + numTrucks(pileRight, loadSize);
+    }
+}
 
-};
 
 // int main() {
 //     int numCrates, loadSize;

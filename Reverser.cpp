@@ -1,38 +1,37 @@
+#include "Reverser.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 
-class Reverser {
 
-public:
-    int reverseDigit(int value) {
-        return reverseHelper(value, 0);
-    }
+int Reverser::reverseDigit(int value) {
+    return reverseHelper(value, 0);
+};
 
-    string reverseString(string characters) {
-        //base case
-        if (characters.length() <= 1){
-            return characters;
-        }else{
-            //arrange
-            char num1char = characters[0];
-            string leastnum = characters.substr(1);
-            string reversstring = reverseString(leastnum);
+string Reverser::reverseString(string characters) {
+    //base case
+    if (characters.length() <= 1){
+        return characters;
+    }else{
+        //arrange
+        char num1char = characters[0];
+        string leastnum = characters.substr(1);
+        string reversstring = reverseString(leastnum);
 
-            return reversstring + num1char;
-        }
-    };
-
-private:
-    int reverseHelper(int remaining, int reversed) {
-        if (remaining == 0) {
-            return reversed;
-        }
-        //calculate
-        return reverseHelper(remaining / 10, reversed * 10 + remaining % 10);
+        return reversstring + num1char;
     }
 };
+
+
+int Reverser::reverseHelper(int remaining, int reversed) {
+    if (remaining == 0) {
+        return reversed;
+    }
+    //calculate
+        return reverseHelper(remaining / 10, reversed * 10 + remaining % 10);
+}
+
 
 //int main() {
 //    // Create an instance of the Reverser class
