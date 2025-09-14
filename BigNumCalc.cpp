@@ -2,7 +2,7 @@
 #include <cctype>
 #include <algorithm>
 
-std::list<int> bigNumCalc::buildBigNum(const std::string& numString) {
+std::list<int> BigNumCalc::buildBigNum(const std::string& numString) {
     std::list<int> res;
 
     for (char c : numString) {
@@ -17,13 +17,13 @@ std::list<int> bigNumCalc::buildBigNum(const std::string& numString) {
     return res;
 }
 
-void bigNumCalc::stripLeadingZeros(std::list<int>& n) const {
+void BigNumCalc::stripLeadingZeros(std::list<int>& n) const {
     while (n.size() > 1 && !n.empty() && n.front() == 0) {
         n.pop_front();
     }
 }
 
-int bigNumCalc::cmp(const std::list<int>& a, const std::list<int>& b) const {
+int BigNumCalc::cmp(const std::list<int>& a, const std::list<int>& b) const {
     if (a.size() < b.size()) return -1;
     if (a.size() > b.size()) return  1;
     auto ia = a.begin();
@@ -35,7 +35,7 @@ int bigNumCalc::cmp(const std::list<int>& a, const std::list<int>& b) const {
     return 0;
 }
 
-std::list<int> bigNumCalc::add(const std::list<int>& num1, const std::list<int>& num2) {
+std::list<int> BigNumCalc::add(const std::list<int>& num1, const std::list<int>& num2) {
     std::list<int> res;
     int carry = 0;
 
@@ -55,7 +55,7 @@ std::list<int> bigNumCalc::add(const std::list<int>& num1, const std::list<int>&
     return res;
 }
 
-std::list<int> bigNumCalc::sub(const std::list<int>& num1, const std::list<int>& num2) {
+std::list<int> BigNumCalc::sub(const std::list<int>& num1, const std::list<int>& num2) {
 
     if (cmp(num1, num2) < 0) {
         return std::list<int>{0};
@@ -87,7 +87,7 @@ std::list<int> bigNumCalc::sub(const std::list<int>& num1, const std::list<int>&
     return res;
 }
 
-std::list<int> bigNumCalc::mul(const std::list<int>& num1, const std::list<int>& num2) {
+std::list<int> BigNumCalc::mul(const std::list<int>& num1, const std::list<int>& num2) {
 
     if (num2.empty()) return std::list<int>{0};
     int digit = 0;
