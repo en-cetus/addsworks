@@ -57,10 +57,9 @@ std::vector<std::string> Autocomplete::getSuggestions(const std::string& prefix)
     // Traverse the Trie by prefix
     for (char c : prefix) {
         int k = c - 'a';
-        if (k < 0 || k >= 26 || !cur->next[k]) {
-            return;
+        if (!(k < 0 || k >= 26 || !cur->next[k])) {
+            cur = cur->next[k];
         }
-        cur = cur->next[k];
     }
     return cur->words;
 }
